@@ -19,11 +19,35 @@
          time: $('.trainTime').val().trim(),
          frequency: $('.trainFrequency').val().trim()
        });
+       console.log("test");
      });
 
+     // Creating the table information
+     database.ref().on('child_added', function (snapshot) {
+       console.log(snapshot.val());
+       var value = snapshot.val();
+       //setting initial variables for calculations      
+       var initialStartTime = value.time;
+       var timeFrequency = value.frequency;
+       console.log(initialStartTime);
+       //calling function to calculate other fields
+       var nextTrain = gettingTimeTrain(initialStartTime, timeFrequency);
+       //Creates new row from child-added
+       $('.table').append(
+         `
+          <div class="row">
+              <div class="name col-md">${value.name}</div>
+              <div class="destination col-md">${value.destination}</div>
+              <div class="frequency col-md">${value.frequency} Minutes</div>
+              <div class="nextTrain col-md">${nextTrain[0]}</div>
+              <div class="timeRemaining col-md">${nextTrain[1]} Minutes</div>
+          </div>
+          `
+       )
+     })
 
 
 
 
-     
-)};
+   )
+ };
