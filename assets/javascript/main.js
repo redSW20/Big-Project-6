@@ -14,7 +14,8 @@
      var database = firebase.database();
 
      //When Submit Button is Pressed, Push information to Firebase database
-     $(".submit").on("click", function () {
+     $(".btn").on("click", function (event) {
+       event.preventDefault();
        database.ref().push({
          name: $('.trainName').val().trim(),
          destination: $('.trainDestination').val().trim(),
@@ -47,4 +48,4 @@
           `
        )
      });
-   )};
+  });
