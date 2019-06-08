@@ -34,16 +34,16 @@
        var timeFrequency = value.frequency;
        console.log(initialStartTime);
        //calling function to calculate other fields
-       var nextTrain = gettingTimeTrain(initialStartTime, timeFrequency);
+       var nextTrain = "gettingTimeTrain(initialStartTime, timeFrequency);"
        //Creates new row from child-added
-       $('.table').append(
+       $('#table').append(
          `
           <div class="row">
-              <div class="name col-md">${value.name}</div>
-              <div class="destination col-md">${value.destination}</div>
-              <div class="frequency col-md">${value.frequency} Minutes</div>
-              <div class="nextTrain col-md">${nextTrain[0]}</div>
-              <div class="timeRemaining col-md">${nextTrain[1]} Minutes</div>
+              <div class="name col-md">${snapshot.val().name}</div>
+              <div class="destination col-md">${snapshot.val().destination}</div>
+              <div class="frequency col-md">${snapshot.val().frequency} Minutes</div>
+              <div class="nextTrain col-md">${nextTrain}</div>
+              <div class="timeRemaining col-md">${nextTrain} Minutes</div>
           </div>
           `
        )
